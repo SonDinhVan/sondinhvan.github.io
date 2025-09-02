@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://sondinhvan.github.io/al-folio/sitemap.xml
+Sitemap: https://sondinhvan.github.io/sitemap.xml
