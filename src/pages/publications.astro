@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrimaryNav from '../components/PrimaryNav.astro';
+
+const publicationGroups = [
+  {
+    heading: 'Under Review',
+    publications: [
+      { title: 'Misalignment-aware link analysis and subarray adaptation for LEO uplink NTN', authors: 'Zhanle Zhao, Son Dinh-Van, Yuen Kwan Mo, Siddartha Khastgir, and Matthew D. Higgins', venue: 'Submitted to IEEE Transactions on Mobile Computing.' },
+      { title: 'Performance evaluation of ephemeris-aided LEO NTN uplink under beam misalignment', authors: 'Zhanle Zhao, Son Dinh-Van, Xinjie Luo, and Matthew D. Higgins', venue: 'Under review for the 2026 IEEE GLOBECOM Workshops.' },
+      { title: 'Directivity upper bound and its attainability for cavity-backed dynamic metasurface antennas', authors: 'Xinjie Luo, Son Dinh-Van, Zhanle Zhao, Mohd Saif Ali Khan, and Matthew D. Higgins', venue: 'Under review for the 2026 IEEE GLOBECOM Workshops.' },
+      { title: 'Wideband channel estimation for dynamic metasurface antennas with coupling mismatch', authors: 'Mohd Saif Ali Khan, Son Dinh-Van, Zhanle Zhao, Xinjie Luo, and Matthew D. Higgins', venue: 'Under review for the 2026 IEEE GLOBECOM Workshops.' },
+    ],
+  },
+  {
+    heading: 'Journals',
+    publications: [
+      { title: 'Near-optimal reconfigurable intelligent surface configuration: Blind beamforming with sensing', authors: 'Son Dinh-Van, Phuong Nam Tran, and M. D. Higgins', venue: 'IEEE Transactions on Wireless Communications, accepted for publication.', href: 'https://arxiv.org/abs/2511.05132' },
+      { title: 'Toward safe and energy-efficient 5G NR V2X communications in rural environments', authors: 'Zhanle Zhao, Son Dinh-Van, Yuen Kwan Mo, Siddartha Khastgir, and Matthew D. Higgins', venue: 'IEEE Open Journal of Intelligent Transportation Systems, vol. 7, pp. 746–758, March 2026.', href: 'https://wrap.warwick.ac.uk/198852/' },
+      { title: 'Reinforcement learning with selective exploration for interference management in mmWave networks', authors: 'Son Dinh-Van, V. L. Nguyen, B. B. Cebecioglu, A. Masaracchia, and M. D. Higgins', venue: 'IEEE Transactions on Machine Learning in Communications and Networking, vol. 3, pp. 280–295, February 2025.', href: 'https://wrap.warwick.ac.uk/189574/' },
+      { title: 'Distributed massive MIMO for wireless power transfer in the industrial Internet of Things', authors: 'Son Dinh-Van, H. Q. Ngo, S. L. Cotton, Y. K. Mo, and M. D. Higgins', venue: 'IEEE Open Journal of the Communications Society, vol. 5, pp. 7160–7175, November 2024.', href: 'https://wrap.warwick.ac.uk/188399/' },
+      { title: 'Experimental analysis of 5G NR for indoor industrial environments', authors: 'B. B. Cebecioglu, Y. K. Mo, Son Dinh-Van, A. Evans, D. Mi, M. D. Higgins, R. Abozariba, and A. Aneiba', venue: 'IEEE Access, vol. 12, pp. 89310–89321, June 2024.', href: 'https://wrap.warwick.ac.uk/186604/' },
+      { title: 'A defensive strategy against beam training attack in 5G mmWave networks for manufacturing', authors: 'Son Dinh-Van, T. M. Hoang, B. B. Cebecioglu, D. S. Fowler, Y. K. Mo, and M. D. Higgins', venue: 'IEEE Transactions on Information Forensics and Security, vol. 18, pp. 2204–2217, April 2023.', href: 'https://wrap.warwick.ac.uk/175287/' },
+      { title: 'A 5G automated-guided vehicle SME testbed for resilient future factories', authors: 'D. S. Fowler, Y. K. Mo, A. Evans, Son Dinh-Van, B. Ahmad, M. D. Higgins, and C. Maple', venue: 'IEEE Open Journal of the Industrial Electronics Society, vol. 4, pp. 242–258, June 2023.', href: 'https://wrap.warwick.ac.uk/177098/' },
+      { title: 'Unsupervised deep-learning-based reconfigurable intelligent surface-aided broadcasting communications in industrial IoTs', authors: 'Son Dinh-Van, T. M. Hoang, R. Trestian, and H. X. Nguyen', venue: 'IEEE Internet of Things Journal, vol. 9, no. 19, pp. 19515–19528, October 2022.', href: 'https://wrap.warwick.ac.uk/165953/' },
+      { title: 'RIS-aided smart manufacturing: information transmission and machine health monitoring', authors: 'T. M. Hoang, Son Dinh-Van, B. Barn, R. Trestian, and H. X. Nguyen', venue: 'IEEE Internet of Things Journal, vol. 9, no. 22, pp. 22930–22943, November 2022.', href: 'https://wrap.warwick.ac.uk/166614/' },
+      { title: 'Sub-6 GHz channel modelling and evaluation in indoor industrial environments', authors: 'B. B. Cebecioglu, Y. K. Mo, Son Dinh-Van, D. S. Fowler, A. Evans, A. Sivanathan, E. Kampert, B. Ahmad, and M. D. Higgins', venue: 'IEEE Access, vol. 10, pp. 127742–127753, December 2022.', href: 'https://wrap.warwick.ac.uk/171830/' },
+      { title: 'Wireless powered wearables using distributed massive MIMO', authors: 'Son Dinh-Van, H. Q. Ngo, and S. L. Cotton', venue: 'IEEE Transactions on Communications, vol. 68, no. 4, pp. 2156–2172, April 2020.', href: 'https://pure.qub.ac.uk/en/publications/wireless-powered-wearables-using-distributed-massive-mimo/' },
+      { title: 'Channel deviation-based power control in body area networks', authors: 'Son Dinh-Van, S. L. Cotton, and D. B. Smith', venue: 'IEEE Journal of Biomedical and Health Informatics, vol. 22, no. 3, pp. 785–798, May 2018.', href: 'https://pure.qub.ac.uk/en/publications/channel-deviation-based-power-control-in-body-area-networks/' },
+      { title: 'Interference-aware transmission for D2D communications in a cellular network', authors: 'Son Dinh-Van, V.-D. Nguyen, and O.-S. Shin', venue: 'Wireless Personal Communications, vol. 98, pp. 1489–1503, January 2018.' },
+      { title: 'Resource allocation and power control based on user grouping for underlay device-to-device communications in cellular networks', authors: 'Son Dinh-Van, Y. Shin, and O.-S. Shin', venue: 'Transactions on Emerging Telecommunications Technologies, vol. 28, no. 1, e2920, January 2017.' },
+    ],
+  },
+  {
+    heading: 'Conferences',
+    publications: [
+      { title: 'Blind beamforming for reconfigurable intelligent surfaces via quadratic modeling', authors: 'Son Dinh-Van, Phuong Nam Tran, and Matthew D. Higgins', venue: 'IEEE International Conference on Communications Workshop, Glasgow, U.K., 2026.', href: 'https://wrap.warwick.ac.uk/199329/' },
+      { title: 'Fountain codes based rapid wireless data offloading strategy for CAV', authors: 'B. B. Cebecioglu, D. Mi, R. Abozariba, A. Aneiba, Son Dinh-Van, M. D. Higgins, Z. Wang, and L. Zhang', venue: '2024 IEEE Middle East Conference on Communications and Networking (MECOM), Abu Dhabi, 2024, pp. 380–385.' },
+      { title: 'Joint beamforming design for distributed RIS-aided broadcast communications with deep learning', authors: 'Son Dinh-Van, M. D. Higgins, and H. X. Nguyen', venue: '2024 IEEE Wireless Communications and Networking Conference (WCNC), Dubai, April 2024, pp. 1–6.', href: 'https://wrap.warwick.ac.uk/185905/' },
+      { title: 'Rapid beam training at terahertz frequency with contextual multi-armed bandit learning', authors: 'Son Dinh-Van, Y. K. Mo, J. Zidan, D. S. Fowler, A. Evans, M. D. Higgins, and V. C. Trinh', venue: '2024 IEEE International Conference on Industrial Technology (ICIT), Bristol, March 2024, pp. 1–7.', href: 'https://wrap.warwick.ac.uk/185907/' },
+      { title: 'A transmit power control scheme for body area networks used in ambient assisted living', authors: 'Son Dinh-Van, S. L. Cotton, and D. B. Smith', venue: '2016 IEEE International Symposium on Personal, Indoor, and Mobile Radio Communications (PIMRC), Valencia, September 2016, pp. 1–6.' },
+      { title: 'Opportunistic relaying with wireless energy harvesting in a cognitive radio system', authors: 'V.-D. Nguyen, Son Dinh-Van, and O.-S. Shin', venue: '2015 IEEE Wireless Communications and Networking Conference (WCNC), New Orleans, March 2015, pp. 87–92.' },
+      { title: 'User grouping for device-to-device communications underlaying cellular networks', authors: 'Son Dinh-Van, Q. Duong, and O.-S. Shin', venue: '2014 IEEE Consumer Communications and Networking Conference (CCNC), Las Vegas, January 2014, pp. 563–568.' },
+      { title: 'The problem of pilot contamination reduction in massive MIMO for physical channel models', authors: 'V.-D. Nguyen, Son Dinh-Van, Y. Shin, W. C. Lee, and O.-S. Shin', venue: '2014 International Conference on Ubiquitous and Future Networks (ICUFN), Shanghai, 2014, pp. 378–382.' },
+      { title: 'Grouped device-to-device communication underlaying cellular networks', authors: 'Son Dinh-Van, Q. Duong, and O.-S. Shin', venue: '2013 International Conference on ICT Convergence (ICTC), Jeju, October 2013, pp. 36–37.' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Selected Publications · Son Dinh-Van"
+  description="Selected publications by Son Dinh-Van in wireless communications, 5G/6G, intelligent surfaces, industrial networks and connected mobility."
+>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-title">
+        <a class="site-name" href="/">Son Dinh-Van</a>
+        <p>Welcome to my website</p>
+      </div>
+      <PrimaryNav active="publications" />
+    </header>
+
+    <main>
+      <section class="publications-intro">
+        <div class="heading-row">
+          <h1>Publications</h1>
+          <a href="https://scholar.google.com/citations?user=s7BHc7QAAAAJ&hl=en">Full list on Google Scholar</a>
+        </div>
+      </section>
+
+      <div class="publication-groups">
+        {publicationGroups.map((group) => (
+          <section class="publication-group">
+            <h2>{group.heading}</h2>
+            <ol class="publication-list">
+              {group.publications.map((publication) => (
+                <li>
+                  <span>{publication.authors},</span>
+                  “{publication.href ? <a href={publication.href}>{publication.title}</a> : publication.title},”
+                  <em>{publication.venue}</em>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+    </main>
+
+    <footer>
+      <a href="/">← Return to the home page</a>
+      <p>Last updated: August 2026</p>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #dde2d3;
+    color: #25251f;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12px;
+  }
+
+  a {
+    color: #6d4931;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover,
+  a:focus-visible { color: #4d5d37; }
+
+  .page {
+    width: min(1000px, calc(100% - 32px));
+    min-height: 100vh;
+    margin: 24px auto;
+    background-color: #fffdf5;
+    background-image: radial-gradient(rgb(109 73 49 / 12%) 1px, transparent 1px);
+    background-size: 14px 14px;
+    overflow: hidden;
+  }
+
+  .site-header {
+    position: relative;
+    border-bottom: 1px solid #4d5d37;
+    background: #dfe7c9;
+  }
+
+  .site-title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px 24px 17px;
+  }
+
+  .site-title p {
+    margin: 0;
+    color: #525b46;
+  }
+
+  .site-name {
+    display: block;
+    margin: 0 0 3px;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.15;
+    text-decoration: none;
+  }
+
+  nav {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 0 8px 22px;
+    background: transparent;
+  }
+
+  nav a {
+    padding: 3px 18px 3px 0;
+    color: #6d4931;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  nav a[aria-current="page"] {
+    color: #4d5d37;
+    text-decoration-thickness: 2px;
+  }
+
+  .publications-intro {
+    padding: 34px;
+    background: rgb(255 253 245 / 94%);
+  }
+
+  .heading-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  h1 {
+    margin: 0;
+    padding-bottom: 7px;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.15rem;
+    line-height: 1.15;
+  }
+
+  .publication-group {
+    padding: 42px 34px;
+    border-top: 1px solid #8a9873;
+    background: rgb(249 249 237 / 94%);
+  }
+
+  .publication-group:nth-child(even) { background: rgb(255 253 245 / 94%); }
+
+  .publication-group h2 {
+    margin: 0 0 16px;
+    color: #3f403b;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.65rem;
+    font-weight: bold;
+  }
+
+  .heading-row > a {
+    flex: none;
+    padding-bottom: 7px;
+    font-size: 0.88rem;
+  }
+
+  .publication-list {
+    margin: 0;
+    padding-left: 25px;
+  }
+
+  .publication-list li {
+    margin: 0;
+    padding: 0 0 18px 7px;
+    font-weight: normal;
+  }
+
+  .publication-list li + li {
+    padding-top: 18px;
+    border-top: 1px dotted #9ca888;
+  }
+
+  .publication-list li::marker {
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 34px;
+    border-top: 1px solid #4d5d37;
+    background: #dfe7c9;
+    color: #525b46;
+    font-size: 0.78rem;
+  }
+
+  footer p { margin: 0; }
+
+  @media (max-width: 680px) {
+    .page {
+      width: 100%;
+      margin: 0;
+    }
+
+    .site-title { padding: 17px 16px 14px; }
+    .site-name { font-size: 1.55rem; }
+    .site-title p { font-size: 0.82rem; }
+    nav {
+      position: static;
+      padding: 7px 16px;
+      border-top: 1px dashed #4d5d37;
+      background: #fffdf5;
+    }
+    nav a {
+      padding: 3px 12px 3px 0;
+      font-size: 0.82rem;
+    }
+
+    .publications-intro,
+    .publication-group { padding: 28px 20px; }
+    .heading-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    footer { padding: 13px 20px; }
+  }
+</style>

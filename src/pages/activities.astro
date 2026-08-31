@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrimaryNav from '../components/PrimaryNav.astro';
+
+const talks = [
+  { title: 'Reconfigurable Intelligent Surfaces: From Theory to Implementation', detail: 'NI Days, Wireless Round Table Conference · July 2026 · 40+ experts from academia and industry', href: 'https://www.yottavolt.com/wireless-round-table-conference/' },
+  { title: '5G Channel Measurement in Manufacturing', detail: 'IET Antennas & Propagation Colloquium · November 2024 · 480 attendees', href: 'https://engx.theiet.org/b/blogs/posts/iet-antennas-propagation-colloquium' },
+];
+
+const mediaMentions = [
+  { title: 'Testing 5G for Connected Vehicles', detail: 'Electronics Weekly · 2023 · with Rohde & Schwarz', href: 'https://www.electronicsweekly.com/news/research-news/testing-5g-for-connected-vehicles-2023-11/' },
+];
+
+const organising = [
+  {
+    role: 'Organising Committee · Session Chair',
+    title: 'WMG Annual Conference 2025: Recycling and Circular Economy',
+    detail: 'December 2025 · 100+ attendees · Chaired 2 sessions',
+  },
+];
+
+const reviewers = [
+  'IEEE Transactions on Wireless Communications',
+  'IEEE Transactions on Communications',
+  'IEEE Internet of Things Journal',
+  'IEEE Transactions on Antennas and Propagation',
+  'IEEE Transactions on Vehicular Technology',
+  'IEEE Wireless Communications Letters',
+  'IEEE Global Communications Conference (GLOBECOM), 2026',
+];
+---
+
+<BaseLayout title="Activities · Son Dinh-Van" description="Invited talks, conference organisation and academic reviewing by Son Dinh-Van.">
+  <div class="page">
+    <header class="site-header">
+      <div class="site-title">
+        <a class="site-name" href="/">Son Dinh-Van</a>
+        <p>Welcome to my website</p>
+      </div>
+      <PrimaryNav active="activities" />
+    </header>
+
+    <main>
+      <section class="section">
+        <h1>Activities</h1>
+      </section>
+
+      <section class="section">
+        <h2>Invited Talks</h2>
+        <ol class="activity-list">
+          {talks.map((talk) => (
+            <li class="activity-entry">
+              <h3><a href={talk.href}>{talk.title}</a></h3>
+              <p>{talk.detail}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Media Mentions</h2>
+        <div class="activity-list">
+          {mediaMentions.map((mention) => (
+            <article class="activity-entry">
+              <h3><a href={mention.href}>{mention.title}</a></h3>
+              <p>{mention.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Academic Leadership &amp; Organisation</h2>
+        <div class="activity-list">
+          {organising.map((item) => (
+            <article class="activity-entry leadership-entry">
+              <h3>{item.role}</h3>
+              <p class="event-title">{item.title}</p>
+              <p class="event-detail">{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Professional Membership &amp; Recognition</h2>
+        <ul>
+          <li>Member of the Institute of Electrical and Electronics Engineers (IEEE)</li>
+          <li>Associate Fellow of the Higher Education Academy (AFHEA)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Reviewing</h2>
+        <p>Reviewers for journals and conferences in wireless communications and related areas, including:</p>
+        <ul>
+          {reviewers.map((journal) => <li>{journal}</li>)}
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <a href="/">← Return to the home page</a>
+      <p>Last updated: August 2026</p>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) { margin: 0; background: #dde2d3; color: #25251f; font-family: "Trebuchet MS", Arial, sans-serif; font-size: 16px; line-height: 1.55; }
+  * { box-sizing: border-box; }
+  a { color: #6d4931; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover, a:focus-visible { color: #4d5d37; }
+  .page { width: min(1000px, calc(100% - 32px)); min-height: 100vh; margin: 24px auto; background-color: #fffdf5; background-image: radial-gradient(rgb(109 73 49 / 12%) 1px, transparent 1px); background-size: 14px 14px; overflow: hidden; }
+  .site-header { position: relative; border-bottom: 1px solid #4d5d37; background: #dfe7c9; }
+  .site-title { display: flex; width: 100%; flex-direction: column; padding: 20px 24px 17px; }
+  .site-title p { margin: 0; color: #525b46; }
+  .site-name { display: block; margin: 0 0 3px; color: #4d5d37; font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: bold; line-height: 1.15; text-decoration: none; }
+  nav { position: absolute; top: 20px; right: 22px; display: flex; flex-wrap: wrap; padding: 8px 0 8px 22px; background: transparent; }
+  nav a { padding: 3px 18px 3px 0; color: #6d4931; font-size: 0.9rem; font-weight: bold; }
+  nav a[aria-current="page"] { color: #4d5d37; text-decoration-thickness: 2px; }
+  .section { padding: 30px 34px; border-top: 1px solid #9ca888; background: rgb(255 253 245 / 94%); }
+  .section:first-child { border-top: 0; }
+  h1, h2, h3 { color: #4d5d37; font-family: Georgia, "Times New Roman", serif; line-height: 1.2; }
+  h1 { margin: 0; font-size: 2.15rem; }
+  h2 { margin: 0 0 16px; font-size: 1.55rem; }
+  h3 { margin: 0; font-size: 1.16rem; }
+  p { margin: 0 0 16px; }
+  .activity-list { margin: 0; padding-left: 28px; }
+  .activity-entry { padding: 5px 0 11px; }
+  .activity-entry h3 { color: #25251f; font-family: inherit; font-size: 1rem; }
+  .activity-entry h3 a { color: #25251f; }
+  .activity-entry h3 a:hover,
+  .activity-entry h3 a:focus-visible { color: #4d5d37; }
+  .activity-entry p { margin: 2px 0 0; color: #525b46; }
+  .leadership-entry h3 { color: #4d5d37; font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; }
+  .leadership-entry .event-title { margin-top: 7px; color: #25251f; font-weight: bold; }
+  .leadership-entry .event-detail { margin-top: 1px; }
+  ul { margin: 0; padding-left: 24px; }
+  li { margin: 3px 0; }
+  li::marker { color: #6d4931; }
+  footer { display: flex; justify-content: space-between; gap: 20px; padding: 14px 34px; border-top: 1px solid #4d5d37; background: #dfe7c9; color: #525b46; font-size: 0.78rem; }
+  footer p { margin: 0; }
+  @media (max-width: 720px) {
+    .page { width: 100%; margin: 0; }
+    .site-title { padding: 17px 16px 14px; }
+    .site-name { font-size: 1.55rem; }
+    .site-title p { font-size: 0.82rem; }
+    nav { position: static; padding: 7px 14px; border-top: 1px dashed #4d5d37; background: #fffdf5; }
+    nav a { padding-right: 14px; }
+    .section { padding: 26px 20px; }
+    footer { padding: 13px 20px; }
+  }
+</style>

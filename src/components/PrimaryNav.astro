@@ -1,0 +1,148 @@
+---
+interface Props {
+  active?: 'home' | 'research' | 'publications' | 'activities' | 'students' | 'contact';
+  researchPage?: 'vision' | 'themes';
+}
+
+const { active, researchPage } = Astro.props;
+---
+
+<nav class="primary-nav" aria-label="Primary navigation">
+  <a href="/#home" aria-current={active === 'home' ? 'page' : undefined}>Home</a>
+
+  <div class:list={['research-dropdown', active === 'research' && 'section-current']}>
+    <button class="research-trigger" type="button" aria-haspopup="menu">
+      Research <span aria-hidden="true">▾</span>
+    </button>
+    <div class="research-menu" role="menu">
+      <a href="/research/" role="menuitem" aria-current={researchPage === 'vision' ? 'page' : undefined}>Vision</a>
+      <a href="/research/research_theme/" role="menuitem" aria-current={researchPage === 'themes' ? 'page' : undefined}>Research Themes</a>
+    </div>
+  </div>
+
+  <a href="/publications/" aria-current={active === 'publications' ? 'page' : undefined}>Publications</a>
+  <a href="/activities/" aria-current={active === 'activities' ? 'page' : undefined}>Activities</a>
+  <a href="/students/" aria-current={active === 'students' ? 'page' : undefined}>Students</a>
+  <a href="/contact/" aria-current={active === 'contact' ? 'page' : undefined}>Contact</a>
+</nav>
+
+<style>
+  .primary-nav {
+    position: absolute;
+    z-index: 20;
+    top: 20px;
+    right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 8px 0 8px 22px;
+    background: transparent;
+  }
+
+  .primary-nav > a,
+  .research-trigger {
+    padding: 3px 18px 3px 0;
+    color: #6d4931;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1.55;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .primary-nav > a:hover,
+  .primary-nav > a:focus-visible,
+  .research-trigger:hover,
+  .research-trigger:focus-visible,
+  .section-current .research-trigger {
+    color: #4d5d37;
+  }
+
+  .primary-nav > a[aria-current="page"],
+  .section-current .research-trigger {
+    text-decoration-thickness: 2px;
+  }
+
+  .research-dropdown {
+    position: relative;
+  }
+
+  .research-trigger {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .research-trigger span {
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 0.72em;
+    text-decoration: none;
+    transition: transform 140ms ease;
+  }
+
+  .research-menu {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% - 1px);
+    left: -14px;
+    min-width: 190px;
+    padding: 8px 0;
+    border: 1px solid #8a9873;
+    background: #fffdf5;
+    box-shadow: 3px 4px 0 rgb(77 93 55 / 14%);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    visibility: hidden;
+    transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+  }
+
+  .research-menu a {
+    display: block;
+    padding: 7px 14px;
+    color: #6d4931;
+    font-size: 0.88rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .research-menu a:hover,
+  .research-menu a:focus-visible,
+  .research-menu a[aria-current="page"] {
+    color: #4d5d37;
+    background: #eef1e2;
+  }
+
+  .research-dropdown:hover .research-menu,
+  .research-dropdown:focus-within .research-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .research-dropdown:hover .research-trigger span,
+  .research-dropdown:focus-within .research-trigger span {
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 720px) {
+    .primary-nav {
+      position: static;
+      padding: 7px 14px;
+      border-top: 1px dashed #4d5d37;
+      background: #fffdf5;
+    }
+
+    .primary-nav > a,
+    .research-trigger {
+      padding-right: 14px;
+    }
+
+    .research-menu {
+      left: 0;
+    }
+  }
+</style>

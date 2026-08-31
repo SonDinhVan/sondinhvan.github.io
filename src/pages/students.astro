@@ -1,0 +1,303 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrimaryNav from '../components/PrimaryNav.astro';
+
+const currentStudents = [
+  {
+    name: 'Xinjie Luo',
+    period: 'Oct 2025-Oct 2029',
+    degree: 'PhD',
+    topic: 'Chaotic-Cavity-Backed Dynamic Metasurface Antennas for Holographic MIMO Communications',
+  },
+  {
+    name: 'Zhanle Zhao',
+    period: 'Oct 2022-Oct 2026',
+    degree: 'PhD',
+    topic: 'Performance and Energy Analysis of Vehicle-to-Vehicle Communication for Rural Areas',
+  },
+  {
+    name: 'Yunqi Xu',
+    period: 'Oct 2025-Oct 2026',
+    degree: 'MSc',
+    topic: 'AI-Driven Wireless Sensing for Smart Manufacturing',
+  },
+];
+
+const alumni = [
+  {
+    name: 'Xinjie Luo',
+    period: 'Oct 2024-Oct 2025',
+    degree: 'MSc',
+    thesis: 'Advancing intelligent transportation systems: Enhancing V2X communication through 6G-enabled technologies',
+    outcome: 'Distinction',
+  },
+];
+---
+
+<BaseLayout
+  title="PhD Students · Son Dinh-Van"
+  description="Prospective PhD student information, current students and alumni supervised by Son Dinh-Van."
+>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-title">
+        <a class="site-name" href="/">Son Dinh-Van</a>
+        <p>Welcome to my website</p>
+      </div>
+      <PrimaryNav active="students" />
+    </header>
+
+    <main>
+      <section class="section prospective">
+        <h2>Prospective PhD Students</h2>
+        <p>
+          If you would like to pursue a PhD under my supervision, or are interested in collaborating, please feel free to get in touch.
+        </p>
+        <p>Some things that are helpful to have:</p>
+        <ul>
+          <li>A good background in mathematics, machine learning, signal processing or wireless communications</li>
+          <li>A research direction that genuinely interests you</li>
+          <li>A willingness to work hard — trust me, it pays off</li>
+        </ul>
+        <p>
+          Email: <a href="mailto:son.v.dinh@warwick.ac.uk?subject=Prospective%20PhD%20student">son.v.dinh@warwick.ac.uk</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Current Students</h2>
+        <div class="student-list">
+          {currentStudents.map((student) => (
+            <article class="student-entry">
+              <div>
+                <h3>{student.name}</h3>
+                <p class="meta">{student.degree} · {student.period}</p>
+              </div>
+              <p class="student-detail">{student.topic}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Alumni</h2>
+        <div class="student-list">
+          {alumni.map((student) => (
+            <article class="student-entry">
+              <div>
+                <h3>{student.name}</h3>
+                <p class="meta">{student.degree} · {student.period}</p>
+              </div>
+              <p class="student-detail">{student.thesis} <span class="outcome">— {student.outcome}</span></p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="/">← Return to the home page</a>
+      <p>Last updated: August 2026</p>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #dde2d3;
+    color: #25251f;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12px;
+  }
+
+  a {
+    color: #6d4931;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover,
+  a:focus-visible { color: #4d5d37; }
+
+  .page {
+    width: min(1000px, calc(100% - 32px));
+    min-height: 100vh;
+    margin: 24px auto;
+    background-color: #fffdf5;
+    background-image: radial-gradient(rgb(109 73 49 / 12%) 1px, transparent 1px);
+    background-size: 14px 14px;
+    overflow: hidden;
+  }
+
+  .site-header {
+    position: relative;
+    border-bottom: 1px solid #4d5d37;
+    background: #dfe7c9;
+  }
+
+  .site-title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px 24px 17px;
+  }
+
+  .site-title p {
+    margin: 0;
+    color: #525b46;
+  }
+
+  .site-name {
+    display: block;
+    margin: 0 0 3px;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.15;
+    text-decoration: none;
+  }
+
+  nav {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 0 8px 22px;
+    background: transparent;
+  }
+
+  nav a {
+    padding: 3px 18px 3px 0;
+    color: #6d4931;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  nav a[aria-current="page"] {
+    color: #4d5d37;
+    text-decoration-thickness: 2px;
+  }
+
+  .intro,
+  .section {
+    padding: 30px 34px;
+    background: rgb(255 253 245 / 94%);
+  }
+
+  .section {
+    border-top: 1px solid #9ca888;
+  }
+
+  .prospective {
+    background: rgb(245 240 227 / 96%);
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2.15rem;
+  }
+
+  h2 {
+    margin: 0 0 20px;
+    font-size: 1.55rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.18rem;
+  }
+
+  p { margin: 0 0 16px; }
+
+  ul {
+    margin: -4px 0 16px;
+    padding-left: 24px;
+  }
+
+  li::marker { color: #6d4931; }
+
+  .student-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .student-entry {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.36fr) minmax(0, 1fr);
+    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 0;
+  }
+
+  .student-entry:first-child { padding-top: 0; }
+  .student-entry:last-child { border-bottom: 0; }
+
+  .student-entry h3,
+  .student-detail { color: #525b46; }
+
+  .meta {
+    margin: 4px 0 0;
+    color: #5f624f;
+    font-size: 0.9rem;
+  }
+
+  .student-detail {
+    margin: 0;
+  }
+
+  .outcome {
+    color: #5f624f;
+    white-space: nowrap;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 34px;
+    border-top: 1px solid #4d5d37;
+    background: #dfe7c9;
+    color: #525b46;
+    font-size: 0.78rem;
+  }
+
+  footer p { margin: 0; }
+
+  @media (max-width: 680px) {
+    .page {
+      width: 100%;
+      margin: 0;
+    }
+
+    .site-title { padding: 17px 16px 14px; }
+    .site-name { font-size: 1.55rem; }
+    .site-title p { font-size: 0.82rem; }
+    nav {
+      position: static;
+      padding: 7px 14px;
+      border-top: 1px dashed #4d5d37;
+      background: #fffdf5;
+    }
+    nav a { padding-right: 14px; }
+    .intro, .section { padding: 26px 20px; }
+    .student-entry { grid-template-columns: 1fr; }
+    footer { padding: 13px 20px; }
+  }
+</style>

@@ -1,0 +1,364 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrimaryNav from '../components/PrimaryNav.astro';
+---
+
+<BaseLayout
+  title="Son Dinh-Van · University of Warwick"
+  description="Academic homepage of Son Dinh-Van, Assistant Professor at Warwick Manufacturing Group, University of Warwick."
+>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-title">
+        <h1>Son Dinh-Van</h1>
+        <p>Welcome to my website</p>
+      </div>
+      <PrimaryNav active="home" />
+    </header>
+
+    <main>
+      <section id="home" class="section home-section">
+        <div class="profile">
+          <figure>
+            <img src="/images/avatar/son-dinh-van.jpg" alt="Son Dinh-Van" width="1582" height="2047" />
+          </figure>
+
+          <div class="profile-details">
+            <h3>Son Dinh-Van</h3>
+            <p class="position">Assistant Professor</p>
+            <p>
+              Warwick Manufacturing Group (WMG)<br />
+              The University of Warwick, U.K.
+            </p>
+
+            <p class="profile-links">
+              <a class="profile-link" href="https://scholar.google.com/citations?user=s7BHc7QAAAAJ&hl=en">
+                <svg class="profile-link-icon" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M2 8.4 12 3l10 5.4-10 5.4L2 8.4Zm3.2 3.1v5.2c2.1 2 4.3 3 6.8 3s4.7-1 6.8-3v-5.2L12 15.2l-6.8-3.7Zm15.5-.8v5.5h1.1v-6.1l-1.1.6Z" />
+                </svg>
+                <span>Google Scholar</span>
+              </a>
+              <a class="profile-link" href="https://www.linkedin.com/in/sondv89">
+                <svg class="profile-link-icon" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M5.3 3.5A2.3 2.3 0 1 0 5.3 8a2.3 2.3 0 0 0 0-4.5ZM3.4 9.7h3.8v10.8H3.4V9.7Zm6.2 0h3.7v1.5h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6v5.3H18v-4.7c0-1.1 0-2.6-1.7-2.6s-1.9 1.2-1.9 2.5v4.8H9.6V9.7Z" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a class="profile-link" href="https://warwick.ac.uk/fac/sci/wmg/research/research-areas/connectivity-and-navigation-systems-research-group/">
+                <svg class="profile-link-icon" aria-hidden="true" viewBox="0 0 24 24">
+                  <circle cx="12" cy="7" r="3" />
+                  <circle cx="5.5" cy="9" r="2.25" />
+                  <circle cx="18.5" cy="9" r="2.25" />
+                  <path d="M6.5 19v-1.2c0-3.1 2.5-5.6 5.5-5.6s5.5 2.5 5.5 5.6V19h-11Zm-5-1.2c0-2.4 1.8-4.4 4.1-4.7a7.5 7.5 0 0 0-1.1 3.9v2H1.5v-1.2Zm18-4.7c2.3.3 4 2.3 4 4.7V19h-3v-2a7.5 7.5 0 0 0-1-3.9Z" />
+                </svg>
+                <span>CNSRG</span>
+              </a>
+            </p>
+
+            <p>
+              Hello! I’m Son Dinh-Van, an Assistant Professor at WMG, The University of Warwick. I’m from Vietnam.
+            </p>
+
+            <p>
+              My research focuses on wireless communications, particularly the physical layer and lower layers of radio access networks (RANs). I completed my PhD at the Centre for Wireless Innovation (CWI), Queen’s University Belfast.
+            </p>
+
+            <p>
+              I love math. I find it beautiful and fundamental to almost everything we do. I enjoy looking at ideas through a mathematical lens and then implementing them in real systems if possible. In wireless communications, this is not always easy; but when theory works in practice, it is rewarding.
+            </p>
+
+            <h4>My current research interests</h4>
+            <ul class="interest-list">
+              <li>Dynamic metasurface antennas for future MIMO systems</li>
+              <li>Reconfigurable intelligent surfaces</li>
+              <li>AI-driven radio control for reliable and secure wireless networks</li>
+              <li>Connected mobility and non-terrestrial networks</li>
+            </ul>
+
+            <p class="research-link"><a href="/research/research_theme/">Explore my research themes →</a></p>
+
+            <p>
+              I hope you find something useful here. If our interests overlap, I would be very happy to hear from you. I would be delighted to work with you.
+            </p>
+
+            <p>
+              Researchers and industry partners may wish to start with my <a href="/research/research_theme/">Research Themes</a>, while prospective students can visit the <a href="/students/">Students</a> page. If you are simply wandering, have fun reading my <a href="/research/">Vision</a>; it is written for everyone.
+            </p>
+          </div>
+        </div>
+
+        <aside class="phd-notice">
+          <strong>Prospective PhD students:</strong>
+          I am looking for highly motivated students.
+          <a href="/students/">Further information</a>.
+        </aside>
+      </section>
+
+    </main>
+
+    <footer><p>Last updated: August 2026</p></footer>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #dde2d3;
+    color: #25251f;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12px;
+  }
+
+  a {
+    color: #6d4931;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover,
+  a:focus-visible { color: #4d5d37; }
+
+  .page {
+    width: min(1000px, calc(100% - 32px));
+    min-height: 100vh;
+    margin: 24px auto;
+    border-radius: 0;
+    background-color: #fffdf5;
+    background-image: radial-gradient(rgb(109 73 49 / 12%) 1px, transparent 1px);
+    background-size: 14px 14px;
+    overflow: hidden;
+  }
+
+  .site-header {
+    position: relative;
+    padding: 0;
+    border-bottom: 1px solid #4d5d37;
+    background: #dfe7c9;
+  }
+
+  .site-title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px 24px 17px;
+  }
+
+  .site-title p {
+    margin: 0;
+    color: #525b46;
+  }
+
+  .site-header h1 {
+    margin: 0 0 3px;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  nav {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 0 8px 22px;
+    background: transparent;
+  }
+
+  nav a {
+    padding: 3px 18px 3px 0;
+    color: #6d4931;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  nav a:hover,
+  nav a:focus-visible { color: #4d5d37; }
+
+  .section {
+    padding: 30px 34px;
+    border-top: 1px solid #9ca888;
+    background: rgb(255 253 245 / 94%);
+  }
+
+  .home-section { border-top: 0; }
+
+  h2 {
+    margin: 0 0 24px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #8a9873;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+
+  h3 {
+    margin: 0 0 4px;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    margin: 22px 0 8px;
+    color: #3f403b;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+  }
+
+  p { margin: 0 0 16px; }
+
+  .profile {
+    display: grid;
+    grid-template-columns: 195px minmax(0, 1fr);
+    gap: 34px;
+    align-items: start;
+  }
+
+  figure { margin: 0; }
+
+  figure img {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 7px;
+    border: 1px solid #6d4931;
+    border-radius: 0;
+    background: #fffdf5;
+    box-shadow: 7px 7px 0 #bcc8a2;
+    transform: none;
+  }
+
+  .position {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  .interest-list {
+    margin: 0 0 16px;
+    padding-left: 22px;
+  }
+
+  .interest-list li { margin: 3px 0; }
+  .interest-list li::marker { color: #6d4931; }
+
+  .profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    padding: 10px 0;
+    border-top: 1px dotted #788366;
+    border-bottom: 1px dotted #788366;
+  }
+
+  .profile-link {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .profile-link-icon {
+    display: block;
+    width: 1em;
+    height: 1em;
+    flex: none;
+    color: #4d5d37;
+    fill: currentColor;
+  }
+
+  .phd-notice {
+    margin-top: 26px;
+    padding: 15px 18px;
+    border: 2px dashed #6d4931;
+    border-radius: 2px;
+    background: #e8dfc9;
+    box-shadow: 4px 5px 0 rgb(109 73 49 / 12%);
+    transform: rotate(-0.25deg);
+  }
+
+  #research {
+    background: rgb(239 243 228 / 95%);
+  }
+
+  .research-list {
+    counter-reset: research-item;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .research-list li {
+    counter-increment: research-item;
+    padding: 13px 15px;
+    border-left: 4px solid #4d5d37;
+    background: rgb(188 200 162 / 38%);
+  }
+
+  .research-list li::before {
+    display: block;
+    margin-bottom: 3px;
+    color: #6d4931;
+    content: "0" counter(research-item) " · FIELD ENTRY";
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.78rem;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+  }
+
+  .research-list span { color: #555b4c; }
+
+  footer {
+    padding: 16px 34px;
+    border-top: 1px solid #4d5d37;
+    background: #bcc8a2;
+    color: #3c4830;
+    font-size: 0.82rem;
+  }
+
+  footer p { margin: 0; }
+
+  @media (max-width: 680px) {
+    .page {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    .site-title { padding: 17px 16px 14px; }
+    .section { padding: 26px 20px; }
+    .profile,
+    .research-list { grid-template-columns: 1fr; }
+
+    figure { max-width: 195px; }
+
+    nav a {
+      padding: 3px 12px 3px 0;
+      font-size: 0.82rem;
+    }
+
+    nav {
+      position: static;
+      padding-inline: 16px;
+      border-top: 1px dashed #4d5d37;
+      background: #fffdf5;
+    }
+
+    .phd-notice { transform: none; }
+
+    footer { padding-inline: 20px; }
+  }
+</style>

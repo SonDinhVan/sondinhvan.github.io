@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrimaryNav from '../components/PrimaryNav.astro';
+---
+
+<BaseLayout
+  title="Contact · Son Dinh-Van"
+  description="Contact details for Son Dinh-Van at Warwick Manufacturing Group, University of Warwick."
+>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-title">
+        <a class="site-name" href="/">Son Dinh-Van</a>
+        <p>Welcome to my website</p>
+      </div>
+      <PrimaryNav active="contact" />
+    </header>
+
+    <main>
+      <section class="contact-section">
+        <h1>Contact</h1>
+
+        <div class="contact-layout">
+          <div class="contact-details">
+            <div class="contact-entry">
+              <h2>Son Dinh-Van</h2>
+              <p>
+                Warwick Manufacturing Group<br />
+                National Automotive Innovation Centre<br />
+                Prof. Lord Bhattacharyya Building<br />
+                Lord Bhattacharyya Way<br />
+                The University of Warwick<br />
+                Coventry, CV4 7AL<br />
+                United Kingdom
+              </p>
+            </div>
+
+            <div class="contact-entry">
+              <h2>Email</h2>
+              <div class="email-list">
+                <p class="email-row">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 9h18M5 9v10m4-10v10m6-10v10m4-10v10M3 19h18M12 3l9 4H3l9-4Z"></path>
+                  </svg>
+                  <span>
+                    <span class="email-label">University</span>
+                    <a href="mailto:son.v.dinh@warwick.ac.uk">son.v.dinh@warwick.ac.uk</a>
+                  </span>
+                </p>
+                <p class="email-row">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 21a8 8 0 0 1 16 0"></path>
+                  </svg>
+                  <span>
+                    <span class="email-label">Personal</span>
+                    <a href="mailto:im.sondinh@gmail.com">im.sondinh@gmail.com</a>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="naic-gallery" aria-label="National Automotive Innovation Centre">
+            <figure>
+              <img src="/images/naic/NAIC_1.webp" alt="National Automotive Innovation Centre at the University of Warwick." loading="lazy" />
+            </figure>
+            <figure>
+              <img src="/images/naic/NAIC_2.webp" alt="Inside the National Automotive Innovation Centre." loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="/">← Return to the home page</a>
+      <p>Last updated: August 2026</p>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #dde2d3;
+    color: #25251f;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12px;
+  }
+
+  a {
+    color: #6d4931;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover,
+  a:focus-visible { color: #4d5d37; }
+
+  .page {
+    width: min(1000px, calc(100% - 32px));
+    min-height: 100vh;
+    margin: 24px auto;
+    background-color: #fffdf5;
+    background-image: radial-gradient(rgb(109 73 49 / 12%) 1px, transparent 1px);
+    background-size: 14px 14px;
+    overflow: hidden;
+  }
+
+  .site-header {
+    position: relative;
+    border-bottom: 1px solid #4d5d37;
+    background: #dfe7c9;
+  }
+
+  .site-title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px 24px 17px;
+  }
+
+  .site-title p {
+    margin: 0;
+    color: #525b46;
+  }
+
+  .site-name {
+    display: block;
+    margin: 0 0 3px;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.15;
+    text-decoration: none;
+  }
+
+  nav {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 0 8px 22px;
+    background: transparent;
+  }
+
+  nav a {
+    padding: 3px 18px 3px 0;
+    color: #6d4931;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  nav a[aria-current="page"] {
+    color: #4d5d37;
+    text-decoration-thickness: 2px;
+  }
+
+  .contact-section {
+    padding: 30px 34px 38px;
+    background: rgb(255 253 245 / 94%);
+  }
+
+  h1,
+  h2 {
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #8a9873;
+    font-size: 2.15rem;
+  }
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+  }
+
+  p { margin: 0; }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .contact-entry {
+    padding: 17px 0;
+    border-bottom: 1px dotted #9ca888;
+  }
+
+  .contact-entry:first-of-type { padding-top: 0; }
+  .contact-entry:last-of-type { border-bottom: 0; }
+
+  .contact-details {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+    gap: 34px;
+    align-items: start;
+  }
+
+  .contact-details > .contact-entry:first-child {
+    grid-column: 1;
+  }
+
+  .contact-details > .contact-entry:last-child {
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .contact-details > .contact-entry {
+    border-bottom: 0;
+  }
+
+  .email-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .email-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .email-row svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    margin-top: 2px;
+    fill: none;
+    stroke: #525b46;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.6;
+  }
+
+  .email-label {
+    display: block;
+    color: #525b46;
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+
+  .naic-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(40px, 10vw, 120px);
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px dotted #9ca888;
+  }
+
+  .naic-gallery figure {
+    width: min(100%, 370px);
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .naic-gallery figure:first-child { justify-self: start; }
+  .naic-gallery figure:last-child { justify-self: end; }
+
+  .naic-gallery img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 34px;
+    border-top: 1px solid #4d5d37;
+    background: #dfe7c9;
+    color: #525b46;
+    font-size: 0.78rem;
+  }
+
+  footer p { margin: 0; }
+
+  @media (max-width: 680px) {
+    .page {
+      width: 100%;
+      margin: 0;
+    }
+
+    .site-title { padding: 17px 16px 14px; }
+    .site-name { font-size: 1.55rem; }
+    .site-title p { font-size: 0.82rem; }
+    nav {
+      position: static;
+      padding: 7px 14px;
+      border-top: 1px dashed #4d5d37;
+      background: #fffdf5;
+    }
+    nav a { padding-right: 14px; }
+    .contact-section { padding: 26px 20px 32px; }
+    .contact-layout { gap: 24px; }
+    .contact-details { grid-template-columns: 1fr; gap: 4px; }
+    .contact-details > .contact-entry:first-child,
+    .contact-details > .contact-entry:last-child {
+      grid-column: auto;
+    }
+    .contact-details > .contact-entry:first-child {
+      border-bottom: 1px dotted #9ca888;
+    }
+    .naic-gallery { gap: 20px; }
+    footer { padding: 13px 20px; }
+  }
+</style>

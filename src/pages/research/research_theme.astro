@@ -1,0 +1,614 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrimaryNav from '../../components/PrimaryNav.astro';
+
+const topics = [
+  {
+    id: 'ris',
+    title: 'Reconfigurable Intelligent Surfaces (RIS)',
+    description: [
+      'RIS is a surface containing many controllable passive/active elements that can adjust how radio signals are reflected or transmitted. This creates an interesting concept known as <em>a programmable propagation environment</em>. RISs can improve coverage for edge users and improve communication in challenging environments such as factories.',
+      'A fundamental challenge is configuring RISs without accurate instantaneous channel state information (CSI). Channel estimation becomes costly as the number of RIS elements increases and can be degraded by hardware impairments such as carrier frequency offset (CFO). Our research investigates lower-overhead alternatives based on received signal strength (RSS) or statistical CSI. This topic also connects with <a href="#manufacturing">Topic 3</a>, where we explore the use of RISs for reliable wireless connectivity in smart manufacturing.',
+    ],
+    images: [
+      {
+        src: '/images/research/ris-imc-lab-systemmodel.png',
+        alt: 'RIS experiments in an anechoic chamber and a manufacturing environment, alongside a sensing and optimisation system model.',
+      },
+    ],
+    imageCaption: 'RIS experiments in an anechoic chamber and a manufacturing environment, with the sensing and optimisation framework.',
+    papers: [
+      {
+        authors: 'Son Dinh-Van, Phuong Nam Tran, and M. D. Higgins',
+        title: 'Near-optimal reconfigurable intelligent surface configuration: Blind beamforming with sensing',
+        href: 'https://arxiv.org/abs/2511.05132',
+        venue: 'IEEE Transactions on Wireless Communications, 2026.',
+      },
+      {
+        authors: 'Son Dinh-Van, T. M. Hoang, R. Trestian, and H. X. Nguyen',
+        title: 'Unsupervised deep-learning-based reconfigurable intelligent surface-aided broadcasting communications in industrial IoTs',
+        href: 'https://doi.org/10.1109/JIOT.2022.3169276',
+        venue: 'IEEE Internet of Things Journal, vol. 9, no. 19, pp. 19515–19528, October 2022.',
+      },
+    ],
+  },
+  {
+    id: 'dma',
+    title: 'Dynamic Metasurface Antennas for Future MIMO Systems',
+    description: [
+      'MIMO has been an important technology in modern wireless systems. The community is now looking towards massive and extremely large MIMO arrays, where more antenna elements can provide finer spatial control and support more users. However, scaling conventional arrays also increases their physical size, number of radio-frequency components, power consumption and cost.',
+      'Dynamic metasurface antennas (DMAs) inherit the idea of programmable metasurfaces, which has attracted significant interest through RIS research, into the transceiver aperture itself. A DMA integrates many tunable radiating elements into a thin surface and connects them to fewer radio-frequency chains, offering a potentially compact and cost-efficient way to realise large arrays. There are many challenges related to modelling and mutual coupling, which complicate conventional signal processing. Here, we explore directivity and beam control, channel estimation, and joint hardware and signal-processing design for practical DMA-based MIMO systems.',
+    ],
+    images: [
+      {
+        src: '/images/research/dma.png',
+        alt: 'Diagram of a dynamic metasurface antenna, including its tunable radiating elements and feed structure.',
+      },
+    ],
+    imageCaption: 'DMA architecture.',
+  },
+  {
+    id: 'ai-radio',
+    title: 'AI-Driven Radio Control for Resilient and Secure Wireless Networks',
+    description: [
+      'Wireless networks must make increasingly complex control decisions in environments that change rapidly and are difficult to describe using conventional analytical models. AI can learn from network observations and adapt radio operation as conditions change.',
+      'Our research explores the use of AI in several aspects of radio control, including rapid beam training, interference management, and the detection and mitigation of jamming attacks. The aim is to combine wireless domain knowledge with learning-based methods to make future networks more adaptive, resilient and secure. See References for selected examples.',
+    ],
+    images: [
+      {
+        src: '/images/research/beam_training_attack_5G.png',
+        alt: 'Protocol diagram illustrating adaptive radio beam control and channel measurement.',
+      },
+    ],
+    imageCaption: 'An adaptive radio-control protocol.',
+    papers: [
+      {
+        authors: 'Son Dinh-Van, V. L. Nguyen, B. B. Cebecioglu, A. Masaracchia, and M. D. Higgins',
+        title: 'Reinforcement learning with selective exploration for interference management in mmWave networks',
+        href: 'https://doi.org/10.1109/TMLCN.2025.3537967',
+        venue: 'IEEE Transactions on Machine Learning in Communications and Networking, vol. 3, pp. 280–295, February 2025.',
+      },
+      {
+        authors: 'Son Dinh-Van, T. M. Hoang, B. B. Cebecioglu, D. S. Fowler, Y. K. Mo, and M. D. Higgins',
+        title: 'A defensive strategy against beam training attack in 5G mmWave networks for manufacturing',
+        href: 'https://doi.org/10.1109/TIFS.2023.3265341',
+        venue: 'IEEE Transactions on Information Forensics and Security, vol. 18, pp. 2204–2217, April 2023.',
+      },
+    ],
+  },
+  {
+    id: 'manufacturing',
+    title: 'Reliable Wireless Systems for Smart Manufacturing',
+    description: [
+      'Manufacturing is a cornerstone of industrial development. As factories become increasingly automated, robots, automated guided vehicles (AGVs), workers and IoT devices must communicate and operate together. Reliable wireless connectivity is therefore essential for maintaining smooth, efficient and coordinated manufacturing operations.',
+      'Achieving this requires a clear understanding of signal propagation in industrial environments. Metallic structures, machinery and moving equipment can cause strong reflections, blockage and coverage gaps. We conduct 5G channel measurements in real manufacturing environments to characterise these effects and evaluate network performance.',
+      'We also develop 5G platforms for the real-time monitoring and control of AGVs in smart factories. RIS is also considered as a potential solution, see <a href="#ris">Topic 1</a>.',
+    ],
+    images: [
+      {
+        src: '/images/research/smart-manufacturing-imc-agv.png',
+        alt: 'A 5G NR measurement setup in a manufacturing facility alongside an AGV used in a smart factory.',
+      },
+    ],
+    imageCaption: 'Industrial 5G NR measurement environment and AGV realtime control platform via 5G.',
+    papers: [
+      {
+        authors: 'B. B. Cebecioglu, Y. K. Mo, Son Dinh-Van, A. Evans, D. Mi, M. D. Higgins, R. Abozariba, and A. Aneiba',
+        title: 'Experimental analysis of 5G NR for indoor industrial environments',
+        href: 'https://doi.org/10.1109/ACCESS.2024.3419011',
+        venue: 'IEEE Access, vol. 12, pp. 89310–89321, June 2024.',
+      },
+      {
+        authors: 'D. S. Fowler, Y. K. Mo, A. Evans, Son Dinh-Van, B. Ahmad, M. D. Higgins, and C. Maple',
+        title: 'A 5G Automated-Guided Vehicle SME testbed for resilient future factories',
+        href: 'https://doi.org/10.1109/OJIES.2023.3291234',
+        venue: 'IEEE Open Journal of the Industrial Electronics Society, vol. 4, pp. 242–258, June 2023.',
+      },
+    ],
+  },
+  {
+    id: 'mobility-ntn',
+    title: 'Connected Mobility and Non-Terrestrial Networks',
+    description: [
+      'Satellite communications are moving towards wider commercial use through low-Earth-orbit (LEO) constellations such as Starlink, Eutelsat OneWeb and Amazon Leo. These systems can complement terrestrial networks and extend connectivity to vehicles, rural communities, remote locations and areas where conventional infrastructure is unavailable or disrupted.',
+      'However, LEO satellites move rapidly, requiring efficient beam training, tracking and handover. Energy-efficient communication is also important, particularly for vehicles and small terminals.',
+      'Our research investigates misalignment-aware link modelling, satellite tracking, adaptive beam and antenna-subarray control, and energy-efficient communication for connected mobility. The long-term aim is to support seamless connectivity across integrated terrestrial and non-terrestrial networks.',
+    ],
+    images: [
+      {
+        src: '/images/research/mobility-ntn-ssm.png',
+        alt: 'System models for connected-vehicle safety communication and adaptive tracking of low-Earth-orbit satellites.',
+      },
+    ],
+    imageCaption: 'Connected-mobility communication and LEO satellite tracking models.',
+    papers: [
+      {
+        authors: 'Zhanle Zhao, Son Dinh-Van, Yuen Kwan Mo, Siddartha Khastgir, and Matthew D. Higgins',
+        title: 'Toward safe and energy-efficient 5G NR V2X communications in rural environments',
+        href: 'https://doi.org/10.1109/OJITS.2026.3670715',
+        venue: 'IEEE Open Journal of Intelligent Transportation Systems, vol. 7, pp. 746–758, March 2026.',
+      },
+    ],
+  },
+  {
+    id: 'energy-iot',
+    title: 'Energy-Efficient and Wireless-Powered IoT and Wearable Networks',
+    description: [
+      'Wearable and IoT devices are often small, battery-powered and difficult to recharge regularly. This is particularly important in body area networks (BANs), where sensors placed on, in or around the human body must maintain reliable communication while operating with limited energy.',
+      'Our research develops adaptive transmit-power control methods for BANs. These methods respond to changes in the body-centric radio channel, maintaining reliable communication while saving energy consumption.',
+      'We also investigate wireless power transfer using distributed massive MIMO infrastructure. Distributed access points can coordinate their transmissions to charge wearable and industrial IoT devices wirelessly, extending the operating time of sensors whose batteries are difficult to recharge or replace in dangerous situations.',
+    ],
+    images: [
+      {
+        src: '/images/research/ban_wpt.png',
+        alt: 'Wearable radio measurement environments and a distributed massive MIMO wireless-power-transfer architecture for body area networks.',
+      },
+    ],
+    imageCaption: 'Wearable measurement environments and distributed wireless power transfer for BANs.',
+    papers: [
+      {
+        authors: 'Son Dinh-Van, H. Q. Ngo, and S. L. Cotton',
+        title: 'Wireless powered wearables using distributed massive MIMO',
+        href: 'https://doi.org/10.1109/TCOMM.2020.2965442',
+        venue: 'IEEE Transactions on Communications, vol. 68, no. 4, pp. 2156–2172, April 2020.',
+      },
+      {
+        authors: 'Son Dinh-Van, S. L. Cotton, and D. B. Smith',
+        title: 'Channel deviation-based power control in body area networks',
+        href: 'https://doi.org/10.1109/JBHI.2017.2741720',
+        venue: 'IEEE Journal of Biomedical and Health Informatics, vol. 22, no. 3, pp. 785–798, May 2018.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Research Themes · Son Dinh-Van"
+  description="Research themes explored by Son Dinh-Van across signal processing, wireless technologies, experimental systems and real-world applications."
+>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-title">
+        <a class="site-name" href="/">Son Dinh-Van</a>
+        <p>Welcome to my website</p>
+      </div>
+      <PrimaryNav active="research" researchPage="themes" />
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="intro-layout">
+          <div class="intro-copy">
+            <h1>Research Themes</h1>
+
+            <p>Most of my research is centred on signal processing and optimisation for wireless communications, particularly at the physical layer and the lower layers of radio access networks.</p>
+
+            <p><em>Put simply, I develop algorithms that make wireless systems smarter.</em></p>
+
+            <ul class="intro-summary">
+              <li><strong>Wireless technologies:</strong> MIMO, RIS, DMA, mmWave, …</li>
+              <li><strong>Methodologies:</strong> Optimisation, AI, measurements, …</li>
+              <li><strong>Applications:</strong> Smart manufacturing, cellular networks, NTN, …</li>
+            </ul>
+
+            <p class="topics-lead">Some of my current research themes include:</p>
+          </div>
+
+          <figure class="intro-figure image-frame">
+            <img
+              src="/images/research/my_research.png"
+              alt="Venn diagram showing Son Dinh-Van's research at the intersection of wireless technology, algorithms and intelligence, and applications."
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <div class="projects">
+        {[topics[0], topics[1], topics[3], topics[2], topics[4], topics[5]].map((topic, index) => (
+          <section
+            class="project"
+            id={topic.id}
+          >
+            <div class="project-copy">
+              <h2>{index + 1}. {topic.title}</h2>
+
+              <figure class:list={['project-photo', topic.images.length > 1 && 'project-gallery', topic.images.length === 4 && 'gallery-four']}>
+                <div class="image-grid">
+                  {topic.images.map((image) => (
+                    <div class="image-frame">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <figcaption>{topic.imageCaption}</figcaption>
+              </figure>
+
+              {Array.isArray(topic.description)
+                ? topic.description.map((paragraph) => <p set:html={paragraph} />)
+                : <p set:html={topic.description} />}
+            </div>
+
+            {topic.papers && (
+              <div class="outputs">
+                <h3>References</h3>
+                <ol>
+                  {topic.papers.map((paper) => (
+                    <li>
+                      <span class="authors">{paper.authors},</span>
+                      “<a href={paper.href}>{paper.title}</a>,”
+                      <em>{paper.venue}</em>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+          </section>
+        ))}
+      </div>
+    </main>
+
+    <footer>
+      <a href="/">← Return to the home page</a>
+      <p>Last updated: August 2026</p>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #dde2d3;
+    color: #25251f;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12px;
+  }
+
+  a {
+    color: #6d4931;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover,
+  a:focus-visible { color: #4d5d37; }
+
+  .page {
+    width: min(1240px, calc(100% - 32px));
+    min-height: 100vh;
+    margin: 24px auto;
+    background-color: #fffdf5;
+    background-image: radial-gradient(rgb(109 73 49 / 12%) 1px, transparent 1px);
+    background-size: 14px 14px;
+    overflow: hidden;
+  }
+
+  .site-header {
+    position: relative;
+    border-bottom: 1px solid #4d5d37;
+    background: #dfe7c9;
+  }
+
+  .site-title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px 24px 17px;
+  }
+
+  .site-title p {
+    margin: 0;
+    color: #525b46;
+  }
+
+  .site-name {
+    display: block;
+    margin: 0 0 3px;
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.15;
+    text-decoration: none;
+  }
+
+  .primary-nav {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 0 8px 22px;
+    background: transparent;
+  }
+
+  .primary-nav a {
+    padding: 3px 18px 3px 0;
+    color: #6d4931;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .primary-nav a[aria-current="page"] {
+    color: #4d5d37;
+    text-decoration-thickness: 2px;
+  }
+
+  .research-nav {
+    display: flex;
+    gap: 22px;
+    padding: 11px 34px;
+    border-bottom: 1px solid #8a9873;
+    background: rgb(255 253 245 / 94%);
+  }
+
+  .research-nav a {
+    color: #6d4931;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .research-nav a[aria-current="page"] {
+    color: #4d5d37;
+    text-decoration-thickness: 2px;
+  }
+
+  .intro {
+    padding: 27px 34px;
+    background: rgb(255 253 245 / 94%);
+  }
+
+  h1,
+  h2 {
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.15;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2.15rem;
+  }
+
+  .intro-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .intro-copy {
+    max-width: none;
+  }
+
+  .intro-copy p {
+    margin: 12px 0 0;
+  }
+
+  .intro-copy h1 + p {
+    margin-top: 26px;
+  }
+
+  .intro-summary {
+    margin: 20px 0 0;
+    padding-left: 21px;
+  }
+
+  .intro-summary li {
+    margin: 7px 0;
+    padding-left: 2px;
+  }
+
+  .intro-summary strong {
+    color: #3f403b;
+  }
+
+  .intro-summary li::marker {
+    color: #3f403b;
+  }
+
+  .topics-lead {
+    margin-top: 24px;
+    color: #3f403b;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: bold;
+  }
+
+  .intro-figure {
+    justify-self: end;
+    width: 100%;
+    max-width: 320px;
+    margin: 0;
+  }
+
+  .intro-figure.image-frame {
+    background: #f5f3ea;
+  }
+
+
+  .project {
+    padding: 42px 34px;
+    border-top: 1px solid #8a9873;
+    background: rgb(249 249 237 / 94%);
+  }
+
+  .project:nth-child(even) { background: rgb(255 253 245 / 94%); }
+
+  .project h2 {
+    margin: 0 0 12px;
+    color: #3f403b;
+    font-size: 1.65rem;
+  }
+
+  .project-copy { display: flow-root; }
+
+  .project-copy > p {
+    margin: 12px 0;
+    text-align: left;
+  }
+
+  .outputs {
+    margin-top: 2px;
+    padding-top: 14px;
+  }
+
+  .outputs h3 {
+    margin: 0 0 7px;
+    color: #3f403b;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+  }
+
+  .outputs ol {
+    margin: 0;
+    padding-left: 23px;
+  }
+
+  .outputs li {
+    margin: 8px 0;
+    padding-left: 4px;
+  }
+
+  .outputs .authors { font-weight: normal; }
+
+  .outputs li::marker {
+    color: #4d5d37;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+  }
+
+  .project-photo {
+    float: right;
+    width: calc(62.5% - 20px);
+    margin: 3px 0 24px 40px;
+  }
+
+  .image-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .project-gallery .image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .image-frame {
+    display: grid;
+    place-items: center;
+    overflow: visible;
+    border: 1px solid #aab39a;
+    background: #f5f3ea;
+    padding: 9px;
+  }
+
+  .project-gallery .image-frame {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .image-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .project-gallery .image-frame img {
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  figcaption {
+    margin-top: 11px;
+    color: #676956;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.78rem;
+    font-style: italic;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 34px;
+    border-top: 1px solid #4d5d37;
+    background: #dfe7c9;
+    color: #525b46;
+    font-size: 0.78rem;
+  }
+
+  footer p { margin: 0; }
+
+  @media (max-width: 720px) {
+    .intro-layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .intro-copy {
+      max-width: none;
+    }
+
+    .intro-figure {
+      justify-self: center;
+      width: min(100%, 280px);
+      max-width: 280px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page {
+      width: 100%;
+      margin: 0;
+    }
+
+    .site-title { padding: 17px 16px 14px; }
+    .site-name { font-size: 1.55rem; }
+    .site-title p { font-size: 0.82rem; }
+    .primary-nav {
+      position: static;
+      padding: 7px 14px;
+      border-top: 1px dashed #4d5d37;
+      background: #fffdf5;
+    }
+    .primary-nav a { padding-right: 14px; }
+    .research-nav {
+      gap: 18px;
+      padding: 10px 20px;
+    }
+    .intro, .project { padding: 28px 20px; }
+    .project-copy {
+      display: flex;
+      flex-direction: column;
+    }
+    .project h2 { order: 1; }
+    .project-copy > p {
+      order: 2;
+    }
+    .project-photo {
+      order: 3;
+      float: none;
+      width: auto;
+      margin: 13px 0 0;
+    }
+    .project-gallery .image-grid { grid-template-columns: 1fr; }
+    footer { padding: 13px 20px; }
+  }
+</style>
